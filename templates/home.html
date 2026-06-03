@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BingeBuddy</title>
+</head>
+<body>
+
+<h1>BingeBuddy 🎬</h1>
+
+<h2>Select Your Preferences</h2>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <label>Mood:</label>
+    {{ form.mood }}
+
+    <br><br>
+
+    <label>Watching With:</label>
+    {{ form.companion }}
+
+    <br><br>
+
+    <label>Language:</label>
+    {{ form.language }}
+
+    <br><br>
+
+    <label>Genre:</label>
+    {{ form.genre }}
+
+    <br><br>
+
+    <label>Year Range:</label>
+    {{ form.year_range }}
+
+    <br><br>
+
+    <button type="submit">Recommend Movies</button>
+
+</form>
+
+</body>
+</html>

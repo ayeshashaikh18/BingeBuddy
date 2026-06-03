@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Step 3 - Language</title>
+
+<style>
+
+/* ===== GLOBAL PAGE BACKGROUND ===== */
+
+body{
+
+margin:0;
+height:100vh;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+font-family:'Segoe UI', sans-serif;
+
+color:white;
+
+overflow:hidden;
+
+/* animated neon galaxy gradient */
+
+background:
+radial-gradient(circle at 20% 30%, #ff4b5c 0%, transparent 40%),
+radial-gradient(circle at 80% 70%, #7f00ff 0%, transparent 45%),
+radial-gradient(circle at 50% 80%, #00d4ff 0%, transparent 40%),
+linear-gradient(135deg, #020024, #090979, #1a2a6c);
+
+background-size:200% 200%;
+
+animation: vibeMove 12s ease infinite;
+
+}
+
+
+/* background animation movement */
+
+@keyframes vibeMove{
+
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+
+}
+
+
+/* ===== STARFIELD LAYER ===== */
+
+.stars{
+
+position:fixed;
+
+width:100%;
+height:100%;
+
+background:url("https://www.transparenttextures.com/patterns/stardust.png");
+
+opacity:.35;
+
+animation: starDrift 80s linear infinite;
+
+z-index:-1;
+
+}
+
+
+@keyframes starDrift{
+
+from{background-position:0 0;}
+to{background-position:10000px 6000px;}
+
+}
+
+
+/* ===== GLASS QUIZ CARD ===== */
+
+.quiz-box{
+
+background:rgba(255,255,255,0.08);
+
+backdrop-filter:blur(25px);
+
+padding:50px;
+
+border-radius:25px;
+
+width:480px;
+
+text-align:center;
+
+box-shadow:
+0px 10px 50px rgba(0,0,0,.6),
+0px 0px 40px rgba(127,0,255,.35);
+
+animation: fadeUp 1s ease;
+
+}
+
+
+/* entrance animation */
+
+@keyframes fadeUp{
+
+from{
+opacity:0;
+transform:translateY(40px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+
+/* ===== STEP LABEL ===== */
+
+.step-label{
+
+opacity:.7;
+
+margin-bottom:10px;
+
+font-size:14px;
+
+letter-spacing:.5px;
+
+}
+
+
+/* ===== QUESTION TEXT ===== */
+
+h2{
+
+margin-bottom:25px;
+
+font-size:1.8rem;
+
+}
+
+
+/* ===== OPTION CARDS ===== */
+
+label{
+
+display:block;
+
+padding:14px;
+
+margin:12px 0;
+
+border-radius:14px;
+
+cursor:pointer;
+
+transition:.3s;
+
+background:rgba(255,255,255,.06);
+
+border:1px solid rgba(255,255,255,.08);
+
+}
+
+
+/* hover glow effect */
+
+label:hover{
+
+background:rgba(255,255,255,.2);
+
+transform:scale(1.05);
+
+box-shadow:0px 0px 25px rgba(127,0,255,.4);
+
+}
+
+
+/* radio spacing */
+
+input[type="radio"]{
+
+margin-right:10px;
+
+}
+
+
+/* ===== NEXT BUTTON ===== */
+
+button{
+
+margin-top:25px;
+
+padding:14px 40px;
+
+border:none;
+
+border-radius:30px;
+
+background:linear-gradient(90deg,#ff4b5c,#7f00ff);
+
+color:white;
+
+font-size:16px;
+
+cursor:pointer;
+
+transition:.3s;
+
+box-shadow:0px 0px 20px rgba(255,75,92,.6);
+
+}
+
+
+/* button hover animation */
+
+button:hover{
+
+transform:scale(1.1);
+
+box-shadow:0px 0px 40px rgba(255,75,92,1);
+
+background:linear-gradient(90deg,#ff1e38,#9b00ff);
+
+}
+
+</style>
+</head>
+
+<body>
+<div class="stars"></div>
+<div class="quiz-box">
+
+<h2>Pick your movie language 🎧</h2>
+
+<form method="POST">
+
+{% csrf_token %}
+
+<label>
+<input type="radio" name="language" value="English" required>
+Hollywood vibes 🎬
+</label>
+
+<label>
+<input type="radio" name="language" value="Hindi">
+Bollywood feels 💃
+</label>
+
+<button type="submit">Next ➜</button>
+
+</form>
+
+</div>
+
+</body>
+</html>
